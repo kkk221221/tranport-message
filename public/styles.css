@@ -1,0 +1,304 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  background: #f4f5f7;
+  color: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #ffffff 0%, #f2f5ff 50%, #eef1ff 100%);
+}
+
+.page {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(15, 30, 75, 0.08);
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.hero p {
+  margin: 0;
+  line-height: 1.5;
+  color: #4a5770;
+}
+
+.device-card {
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  min-width: 220px;
+}
+
+.device-card .label {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.device-card .value {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+section {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 28px rgba(15, 30, 75, 0.06);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.peer-list {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.peer {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.peer.active {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+}
+
+.peer-name {
+  font-weight: 600;
+}
+
+.peer-id {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.transfer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pickers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.picker-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.target-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.target-name {
+  font-weight: 600;
+  color: #4338ca;
+}
+
+#fileInput {
+  padding: 12px;
+  border: 1px dashed #c7cbe5;
+  border-radius: 12px;
+  background: #f9f9ff;
+}
+
+#sendBtn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+#sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.outline-btn {
+  border: 1px solid #4f46e5;
+  background: transparent;
+  color: #4f46e5;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.drop-zone {
+  border: 2px dashed #a5b4fc;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  color: #4a5770;
+  background: #f8f9ff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.drop-zone.active {
+  border-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.progress-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  transition: width 0.15s ease-out;
+}
+
+.transfer-status {
+  font-size: 0.9rem;
+  color: #4a5770;
+}
+
+.activity ul,
+#log {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.log-item {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f4f4ff;
+  border: 1px solid #e4e7ff;
+  font-size: 0.95rem;
+}
+
+.incoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.incoming-list.empty {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.incoming-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #f9f9ff;
+}
+
+.incoming-title {
+  font-weight: 600;
+}
+
+.incoming-from {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.incoming-progress {
+  font-size: 0.9rem;
+  color: #4338ca;
+}
+
+.incoming-progress-bar {
+  margin-top: 4px;
+}
+
+.incoming-card button {
+  align-self: flex-start;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  background: #10b981;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.incoming-card button.secondary {
+  background: #e5e7eb;
+  color: #374151;
+  margin-left: 8px;
+}
+
+.auto-accept {
+  font-size: 0.85rem;
+  color: #059669;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+  }
+}

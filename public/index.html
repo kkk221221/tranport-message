@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>局域网秒传</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <h1>局域网文件快传</h1>
+          <p>所有处于同一局域网的设备打开此地址即可自动互相识别、收发文件。</p>
+        </div>
+        <div class="device-card">
+          <div class="label">本设备</div>
+          <div id="localDeviceName" class="value">连接中…</div>
+        </div>
+      </section>
+
+      <section class="peers">
+        <div class="section-header">
+          <h2>在线设备</h2>
+          <span id="peerHint">等待连接…</span>
+        </div>
+        <div id="peerList" class="peer-list"></div>
+      </section>
+
+      <section class="transfer">
+        <h2>发送文件</h2>
+        <div class="target-row">
+          <label>目标设备：</label>
+          <span id="targetName" class="target-name">未选择</span>
+        </div>
+        <div class="pickers">
+          <input id="fileInput" type="file" multiple />
+          <input id="folderInput" type="file" webkitdirectory directory hidden />
+          <div class="picker-buttons">
+            <button id="fileBtn" type="button" class="outline-btn">选择文件</button>
+            <button id="folderBtn" type="button" class="outline-btn">选择文件夹</button>
+          </div>
+        </div>
+        <p class="hint">支持多文件与整个文件夹发送（Chrome/Edge 可保留目录结构）。</p>
+        <button id="sendBtn" disabled>发送</button>
+        <div class="progress-row">
+          <div class="progress-bar">
+            <div id="sendProgress" class="progress-bar__fill"></div>
+          </div>
+          <div id="sendStatus" class="transfer-status">等待选择文件</div>
+        </div>
+        <div id="dropZone" class="drop-zone">或将文件 / 文件夹拖到此处</div>
+      </section>
+
+      <section class="incoming">
+        <div class="section-header">
+          <h2>待接收文件</h2>
+          <span id="incomingHint">空闲</span>
+        </div>
+        <div id="incomingList" class="incoming-list empty">当前没有待接收文件。</div>
+      </section>
+
+      <section class="activity">
+        <h2>实时动态</h2>
+        <ul id="log"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

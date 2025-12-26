@@ -1,0 +1,21 @@
+{
+  "name": "tranport-message",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "lan",
+    "file-transfer",
+    "websocket"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Minimal same-LAN file transfer web app",
+  "dependencies": {
+    "express": "^5.1.0",
+    "ws": "^8.18.3"
+  }
+}
