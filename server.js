@@ -2,6 +2,7 @@ const path = require('path');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
+const os = require('os');
 const express = require('express');
 const { WebSocketServer, WebSocket } = require('ws');
 const { randomUUID } = require('crypto');
@@ -158,6 +159,15 @@ wss.on('connection', (ws) => {
 server.listen(PORT, () => {
   const scheme = server instanceof https.Server ? 'https' : 'http';
   console.log(`LAN transfer server running on ${scheme}://localhost:${PORT}`);
+  const ips = getLocalIPv4();
+  if (ips.length) {
+    console.log('LAN access URLs:');
+    ips.forEach((ip) => {
+      console.log(`- ${scheme}://${ip}:${PORT}`);
+    });
+  } else {
+    console.log('No LAN IPv4 address detected.');
+  }
 });
 
 function handleBinaryMessage(senderId, buffer) {
@@ -218,4 +228,18 @@ function relayBinary(fromId, toId, meta, chunk = Buffer.alloc(0)) {
   const payload = Buffer.concat([prefix, headerBuffer, chunk]);
   target.ws.send(payload, { binary: true });
   return true;
+}
+
+function getLocalIPv4() {
+  const nets = os.networkInterfaces();
+  const results = [];
+  Object.values(nets).forEach((addrs) => {
+    if (!addrs) return;
+    addrs.forEach((addr) => {
+      if (addr && addr.family === 'IPv4' && !addr.internal) {
+        results.push(addr.address);
+      }
+    });
+  });
+  return results;
 }
